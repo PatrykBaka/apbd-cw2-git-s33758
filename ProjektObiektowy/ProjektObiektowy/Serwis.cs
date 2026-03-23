@@ -84,7 +84,7 @@ public class Serwis
 
     public void Podsumowanie()
     {
-        if (ListaSprzetu.Count == 0)
+        if (Listawypozyczen.Count == 0)
         {
             Console.WriteLine("Lista wypożyczeń nie posiada żadnej historii!!!");
             return;
