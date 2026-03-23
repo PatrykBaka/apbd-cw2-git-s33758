@@ -50,4 +50,57 @@ public class Serwis
         Console.WriteLine($"Wypożyczono {sp.Nazwa} Osobie {os.Nazwisko}");
     }
 
+    public void Zwrot(int IdSprzetu)
+    {
+        var wyp = Listawypozyczen.FirstOrDefault(x => x._Sprzet.Id == IdSprzetu && x.DataFaktycznegoZwrotu == null);
+        
+        if(wyp == null)
+        {
+            Console.WriteLine("Ten sprzęt nie jest wypożyczony!!!");
+            return;
+        }
+
+        wyp.DataFaktycznegoZwrotu =  DateTime.Now;
+        
+        wyp._Sprzet.status = Status.Dostepny;
+
+        if (wyp.DataFaktycznegoZwrotu > wyp.DataZwrotu)
+        {
+            TimeSpan opoznienie = wyp.DataFaktycznegoZwrotu.Value - wyp.DataZwrotu;
+            
+            int dni = opoznienie.Days;
+
+            if (dni > 0)
+            {
+                wyp.Kara = dni * 1.00m;
+                Console.WriteLine($"Kara za opóźnienie {wyp.Kara} zł.");
+            }
+            else
+            {
+                Console.WriteLine("Brak opóźnienia.");
+            }
+        }
+    }
+
+    public void Podsumowanie()
+    {
+        if (ListaSprzetu.Count == 0)
+        {
+            Console.WriteLine("Lista wypożyczeń nie posiada żadnej historii!!!");
+            return;
+        }
+
+        foreach (var val in Listawypozyczen)
+        {
+            string StatusWypożyczenia = val.DataFaktycznegoZwrotu.HasValue ? $"Zwrócono {val.DataFaktycznegoZwrotu:dd/MM/yyyy}" : "Dalej nie zwrócono";
+            
+            Console.WriteLine($"Osoba: {val._Osoba.Nazwisko}, " +
+                              $"Sprzęt: {val._Sprzet.Nazwa}, " +
+                              $"Data wypożyczenia: {val.DataWypozyczenia:dd/MM/yyyy}, " +
+                              $"Termin zwrotu: {val.DataZwrotu:dd/MM/yyyy}, " +
+                              $"Status: {StatusWypożyczenia}, " +
+                              $"Kara: {val.Kara}, zł.");
+        }
+    }
+
 }
