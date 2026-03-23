@@ -8,6 +8,8 @@ public abstract class Osoba
     public string Nazwisko { get; set; }
     
     public abstract int LiczbaWypozyczen { get; }
+    
+    public abstract string Typ { get; }
 
     protected Osoba(int id, string imie, string nazwisko)
     {
