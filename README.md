@@ -14,4 +14,9 @@ Opis kklas i metod zawartych w nich
 5e. Metoda Podsumowanie to metoda, która pokazuję nam historię wypożyczeń, czyli sprawdzamy najpierw czy nie jest ona pusta, używamy for each do przelecenia po całej liście i wypisania wszystkich danych kto, co, od kiedy do kiedy i czy posiada kare. Tworzymy również zmienną, która jest potrzebna do tego, aby napisać co konkretnie jest w DataFaktycznegoZwrotu, ponieważ może tam być null.
 6. Klasa Program.cs to nasz main, w którym testujemy czy wszystko działa, tworzymy obiekty, dodajemy na liste i testujemy metody czy napewno działają, czy w przypadku np. przekroczenia przez osobę limitu wypiszą odpowiedni komunikat
 
+Stworzyłem równiez 2 branche:
+1. Użyłem go do stworzenia całej klasy Wypozyczenie
+2. Użyłem go do stworzenia całej klasy Serwis
+Używałem ich po kolei, następnie gdy skończyłem klasę Serwis, użyłem merga na obu, ale w kolejności w jakiej je tworzyłem.
+
 To wszystko:)
